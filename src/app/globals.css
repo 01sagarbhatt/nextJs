@@ -1,0 +1,19 @@
+*{
+      margin: 0;
+      padding: 0;
+}
+#CenterBlockElement{
+      margin: auto;
+}
+.HeaderWrapper{
+      display: flex;
+      justify-content: space-between;
+}
+
+.links ul{
+      display: flex;
+      list-style-type: none;
+}
+ul li {
+      margin-left: 10px;
+}
