@@ -8,6 +8,8 @@ const Header = () => {
   const [details, setDetails] = useState();
   const router = useRouter();
   const pathName = usePathname();
+
+  
  
 
 
@@ -19,12 +21,23 @@ const Header = () => {
       router.push('/restaurant/dashboard');
     }
     else {
-      
-      setDetails(JSON.stringify(data));
-      console.log(details);
+
+      setDetails(JSON.parse(data));
+
+
     }
  
-  });
+  },[]);
+
+  const logout = () => {
+    localStorage.removeItem("RegistrationUser");
+    router.push('/restaurant');
+
+  }
+
+  console.log(details);
+
+
   return (
     <div className="HeaderWrapper">
       <div className="logo">
@@ -42,13 +55,12 @@ const Header = () => {
            
             details ?
               <>
-                   <li><Link href="/">Profile</Link></li>
-                   <li><button className="btn btn-danger">Logout</button></li>
+              <li><Link href="/">Profile</Link></li>
+              <li><button className="btn btn-danger" onClick={logout}>Logout</button></li>
             </>
               :
               <>
               <li><Link href="/">Login & SingUp</Link></li>
-                
               </>
 
           }

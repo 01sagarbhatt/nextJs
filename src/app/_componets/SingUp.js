@@ -6,6 +6,7 @@ const SingUp = () => {
   const [lname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setConfirmPassword] = useState("");
   const router = useRouter();
 
   function clearFields(event) {
@@ -17,14 +18,14 @@ const SingUp = () => {
 
   const handleSingUp = async (event) => {
     event.preventDefault();
-    // alert(fname + lname + email +password);
+    alert(fname + lname + email +password +passwordConfirm);
     try {
       let response = await fetch("/api/restaurant", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fname, lname, email, password }),
+        body: JSON.stringify({ fname, lname, email, password, passwordConfirm }),
       });
-      // console.log("raw Response :", response);
+      console.log("raw Response :", response);
 
       if (!response.ok) {
         throw new Error(response.status);
@@ -36,7 +37,8 @@ const SingUp = () => {
       }
       console.log("Response:", JSON.stringify(data, " ", 10));
       console.log("Message", data.message);
-      console.log(data.result.fname);
+      delete data.result.password;
+      delete data.result.passwordConfirm;
       localStorage.setItem('RegistrationUser', JSON.stringify(data.result));
       router.push("restaurant/dashboard");
 
@@ -86,6 +88,15 @@ const SingUp = () => {
               className="form-control"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+            ></input>
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Confirm Password</label>
+            <input
+              type="password"
+              className="form-control"
+              value={passwordConfirm}
+              onChange={(e) => setConfirmPassword(e.target.value)}
             ></input>
           </div>
 
