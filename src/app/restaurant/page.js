@@ -8,7 +8,7 @@ import SingUp from "../_componets/SingUp";
 
 
 const Restaurant = () => {
-          const [isLogin, setIsLogin] = useState(true);
+          const [isLogin, setIsLogin] = useState();
           return (
                     <>
                               <div className="container">

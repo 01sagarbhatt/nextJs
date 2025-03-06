@@ -1,12 +1,14 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+
 const SingUp = () => {
   const [fname, setFirstName] = useState("");
   const [lname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setConfirmPassword] = useState("");
+  const [passwordError, setPasswordError] = useState(false);
   const router = useRouter();
 
   function clearFields(event) {
@@ -17,8 +19,16 @@ const SingUp = () => {
   }
 
   const handleSingUp = async (event) => {
+    
+    if (password !== passwordConfirm) {
+      alert("im on if statement");
+      setPasswordError(true);
+
+  
+    } 
+
     event.preventDefault();
-    alert(fname + lname + email +password +passwordConfirm);
+    // alert(fname + lname + email +password +passwordConfirm);
     try {
       let response = await fetch("/api/restaurant", {
         method: "PUT",
@@ -33,7 +43,7 @@ const SingUp = () => {
       const data = await response.json();
 
       if (data.success) {
-        alert("Registration is Successfully");
+        // alert("Registration is Successfully");
       }
       console.log("Response:", JSON.stringify(data, " ", 10));
       console.log("Message", data.message);
@@ -89,7 +99,11 @@ const SingUp = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></input>
+          
           </div>
+          {
+              passwordError && <span>password and confirm password not match</span>
+            }
           <div className="mb-3">
             <label className="form-label">Confirm Password</label>
             <input
@@ -98,8 +112,11 @@ const SingUp = () => {
               value={passwordConfirm}
               onChange={(e) => setConfirmPassword(e.target.value)}
             ></input>
+    
           </div>
-
+          {
+              passwordError && <span>password and confirm password not match</span>
+            }
           <button type="submit" className="btn btn-warning w-100">
             SingUp
           </button>
