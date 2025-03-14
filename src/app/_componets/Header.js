@@ -22,7 +22,7 @@ const Header = () => {
     }
     else {
 
-      setDetails(JSON.parse(data));
+      setDetails(JSON.stringify(data));
 
 
     }

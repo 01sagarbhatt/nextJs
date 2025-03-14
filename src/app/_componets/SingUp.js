@@ -9,25 +9,38 @@ const SingUp = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState(false);
+  const [error , setError] = useState(false);
   const router = useRouter();
 
   function clearFields(event) {
     // we have to convert event.target to array
     // we use from method to convert event.target to array
     // after that we will use forEach function to go through every input to clear it
-    Array.from(event.target).forEach((e) => (e.value = ""));
+    // Array.from(event.target).forEach((e) => (e.value = ""));
+    event.target.reset(); //
   }
 
   const handleSingUp = async (event) => {
+    event.preventDefault();
+
     
     if (password !== passwordConfirm) {
-      alert("im on if statement");
+      // alert("im on if statement");
       setPasswordError(true);
+      return false;
+    }else{
+      setPasswordError(false);
 
-  
-    } 
+    }if(!fname || !lname || !email || !password || !passwordConfirm){
+      setError(true);
+      return false;
+    }else{
+      setError(false);
+    }
 
-    event.preventDefault();
+
+     
+
     // alert(fname + lname + email +password +passwordConfirm);
     try {
       let response = await fetch("/api/restaurant", {
@@ -43,12 +56,14 @@ const SingUp = () => {
       const data = await response.json();
 
       if (data.success) {
-        // alert("Registration is Successfully");
+        alert("Registration is Successfully");
       }
       console.log("Response:", JSON.stringify(data, " ", 10));
       console.log("Message", data.message);
-      delete data.result.password;
-      delete data.result.passwordConfirm;
+
+      
+      // delete data.result.password;
+      // delete data.result.passwordConfirm;
       localStorage.setItem('RegistrationUser', JSON.stringify(data.result));
       router.push("restaurant/dashboard");
 
@@ -72,6 +87,9 @@ const SingUp = () => {
               value={fname}
               onChange={(e) => setFirstName(e.target.value)}
             ></input>
+            {
+              error && !fname && <span style={{color:"red"}}>please enter your first name</span>
+            }
           </div>
           <div className="mb-3">
             <label className="form-label">Last Name</label>
@@ -81,6 +99,9 @@ const SingUp = () => {
               value={lname}
               onChange={(e) => setLastName(e.target.value)}
             ></input>
+             {
+              error && !lname && <span style={{color:"red"}}>please enter your last name</span>
+            }
           </div>
           <div className="mb-3">
             <label className="form-label">Email Address</label>
@@ -90,6 +111,9 @@ const SingUp = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></input>
+             {
+              error && !email && <span style={{color:"red"}}>please enter your email name</span>
+            }
           </div>
           <div className="mb-3">
             <label className="form-label">Password</label>
@@ -101,9 +125,7 @@ const SingUp = () => {
             ></input>
           
           </div>
-          {
-              passwordError && <span>password and confirm password not match</span>
-            }
+       
           <div className="mb-3">
             <label className="form-label">Confirm Password</label>
             <input
@@ -112,11 +134,11 @@ const SingUp = () => {
               value={passwordConfirm}
               onChange={(e) => setConfirmPassword(e.target.value)}
             ></input>
-    
-          </div>
-          {
-              passwordError && <span>password and confirm password not match</span>
+           {
+              passwordError && <span style={{color:"red"}}>password and confirm password not match</span>
             }
+          </div>
+   
           <button type="submit" className="btn btn-warning w-100">
             SingUp
           </button>
