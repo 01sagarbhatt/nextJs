@@ -25,32 +25,29 @@ export async function GET() {
 // }
 
 export async function PUT(request){
-  const payload = await request.json();
-  await mongoose.connect(ConnectionString);
-  let result;
-  let success = false;
+  try{
+    const payload = await request.json();
+    await mongoose.connect(ConnectionString);
+    let result;
 
-  if(payload?.login)
+  if(payload.login)
   {
     result = await RestaurantSchema.findOne({
       email:payload.email, 
       password:payload.password
     });
 
-    if(result){
-      success = true;
-    }
   }
   else
   {
     const restaurant = new RestaurantSchema(payload);
-    const result = await restaurant.save();
-    if(result){
-      success = true;
-    }
-
+    result = await restaurant.save();
   }
-  return NextResponse.json({ result, success});
-
+  console.log("DB Save Result:", result);
+  return NextResponse.json({ result, success: true, message: "Restaurant successfully saved!" });
+}catch (error) {
+  console.error("API Error:", error);
+  return NextResponse.json({ success: false, message: "Internal Server Error" }, { status: 500 });
+}
 }
 
