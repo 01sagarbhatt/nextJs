@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import Login from "../_componets/Login";
-import SingUp from "../_componets/SingUp";
+import Login from "../_components/Login";
+import SingUp from "../_components/SingUp";
 
 
 

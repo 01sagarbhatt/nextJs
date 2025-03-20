@@ -1,5 +1,5 @@
 "use client";
-import Add_footitem from "@/app/_componets/Add_fooditem";
+import Add_footitem from "@/app/_components/Add_fooditem";
 import { useState } from "react";
 
 const Dashboard = () =>{
