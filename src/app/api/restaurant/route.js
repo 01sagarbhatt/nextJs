@@ -24,41 +24,33 @@ export async function GET() {
 
 // }
 
-export async function POST(request) {
-  try {
-    const payload = await request.json();
-    await mongoose.connect(ConnectionString);
-    let result;
-    let success = false;
-    
-  
-    if(payload.login)
-    {
-      result = await RestaurantSchema.findOne({
-        email:payload.email, 
-        password:payload.password,
-      });
-  
-      if(result){
-        success = true;
-      }
-    }
-    else
-    {
-      const restaurant = new RestaurantSchema(payload);
-      const result = await restaurant.save();
-      if(result.ok){
-        success = true;
-      }
-      console.log("this from route", result);
-  
-      return NextResponse.json({ ResponseResult , success, message: "Resgistation successfully" });
-  
+export async function PUT(request){
+  const payload = await request.json();
+  await mongoose.connect(ConnectionString);
+  let result;
+  let success = false;
+
+  if(payload?.login)
+  {
+    result = await RestaurantSchema.findOne({
+      email:payload.email, 
+      password:payload.password
+    });
+
+    if(result){
+      success = true;
     }
   }
-  catch (error) {
-             return NextResponse.json({ error: error.message, success: false }, { status: 500 });
-        }
+  else
+  {
+    const restaurant = new RestaurantSchema(payload);
+    const result = await restaurant.save();
+    if(result){
+      success = true;
+    }
+
+  }
+  return NextResponse.json({ result, success});
 
 }
 

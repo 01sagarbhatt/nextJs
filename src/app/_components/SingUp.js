@@ -43,11 +43,20 @@ const SingUp = () => {
 
     // alert(fname + lname + email +password +passwordConfirm);
     try {
+<<<<<<< HEAD:src/app/_componets/SingUp.js
       let response = await fetch("/api/restaurant", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fname, lname, email, password, passwordConfirm }),
       });
+=======
+      let response = await fetch("/api/restaurant/", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fname, lname, email, password, passwordConfirm }),
+      })
+ 
+>>>>>>> d7537977571280fd9dff1e8b84141a030e561cf0:src/app/_components/SingUp.js
 
       console.log("Response Object:", response);
       
@@ -55,10 +64,15 @@ const SingUp = () => {
         throw new Error(response.status);
       }
       const data = await response.json();
+<<<<<<< HEAD:src/app/_componets/SingUp.js
       console.log("this is data", data.ResponseResult);
 
 
 
+=======
+      console.log(data);
+      console.log("JSON DATA :", data);
+>>>>>>> d7537977571280fd9dff1e8b84141a030e561cf0:src/app/_components/SingUp.js
 
       if (data.success) {
         alert("Registration is Successfully");
