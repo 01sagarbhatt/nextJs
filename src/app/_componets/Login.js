@@ -29,6 +29,9 @@ let response  = await fetch("/api/restaurant",{
   method : "PUT",
   body: JSON.stringify({email,password, login:true})
 })
+  console.log("Raw Response", response);
+
+  
 response= await response.json();
 
 const {result} = response;

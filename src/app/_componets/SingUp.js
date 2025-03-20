@@ -44,16 +44,21 @@ const SingUp = () => {
     // alert(fname + lname + email +password +passwordConfirm);
     try {
       let response = await fetch("/api/restaurant", {
-        method: "PUT",
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fname, lname, email, password, passwordConfirm }),
       });
-      console.log("raw Response :", response);
 
+      console.log("Response Object:", response);
+      
       if (!response.ok) {
         throw new Error(response.status);
       }
       const data = await response.json();
+      console.log("this is data", data.ResponseResult);
+
+
+
 
       if (data.success) {
         alert("Registration is Successfully");
