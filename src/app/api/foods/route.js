@@ -5,13 +5,25 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
           try {
+                    console.log("Connecting to MongoDB...");
                     await mongoose.connect(ConnectionString);
+                    console.log("Connected to MongoDB!");
                     const payload = await request.json();
+                    console.log("Payload received:", payload);
+
                     const Food = new FoodSchema(payload);
                     const result = await Food.save();
-                    return NextResponse.json({ result, success: true, message: "Food Item Added Successfully" });
+                    console.log("Data saved successfully:", result);
+                    return NextResponse.json({
+                              result,
+                              success: true,
+                              message: "Food Item Added Successfully",
+                    });
           } catch {
-                    return NextResponse.json({ error: error.message, success: false }, { status: 500 });
+                    console.error("Error occurred:");
+                    return NextResponse.json({
+                              success: false
+                    }, { status: 500 });
                     
           }
 }

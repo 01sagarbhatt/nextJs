@@ -6,4 +6,4 @@ const FoodModal = new mongoose.Schema({
           path: String,
           description: String
 });
-export const FoodSchema = mongoose.models.food_Item || mongoose.model("food_item", FoodModal);
+export const FoodSchema = mongoose.models.food_Item || mongoose.model("food_Item", FoodModal);
