@@ -34,13 +34,19 @@ const handleAddfoodItem = async (event) => {
     alert(name+price+path+description);
 
     try{
-      let response = await fetch("/api/restaurant/",{
-        method: "PUT",
-        headers: {"Content-Type" : "application/json"},
-        body:JSON.stringify({name, price, path, description}),
+      let response = await fetch("/api/foods", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          price : Number(price),
+          path,
+          description,
+        }),
 
-      })
+      });
 if(response.ok){
+<<<<<<< HEAD
   alert("done");
   console.log("Response", response);
   const ResponseData = response.json();
@@ -48,6 +54,16 @@ if(response.ok){
 }
     }catch(error){
       console.error("Error in fetcing api:",error);
+=======
+  alert("Food Item Added Successfully");
+} else {
+  const errorData = await response.json();
+  alert(`Error: ${errorData.message}`);
+}
+    }catch{
+      console.error("Error adding food item:");
+      alert("Failed to add food item. Please try again.");
+>>>>>>> 21c53b84fdf0ddac27ef4201afbaaaa5efeb769d
     }
     clearFields(event);
 

@@ -44,7 +44,7 @@ const SingUp = () => {
     // alert(fname + lname + email +password +passwordConfirm);
     try {
       let response = await fetch("/api/restaurant", {
-        method: "POST",
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fname, lname, email, password, passwordConfirm }),
       });
