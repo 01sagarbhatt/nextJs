@@ -21,9 +21,8 @@ function clearFields(event) {
 
 }
 
-const handleAddfoodItem = async (event)=>{
+const handleAddfoodItem = async (event) => {
   event.preventDefault();
-
   if(!name || !price || !path || !description){
     setInputError(true);
     return false;
@@ -43,13 +42,16 @@ const handleAddfoodItem = async (event)=>{
       })
 if(response.ok){
   alert("done");
+  console.log("Response", response);
+  const ResponseData = response.json();
+  console.log(ResponseData);
 }
-    }catch{
-
+    }catch(error){
+      console.error("Error in fetcing api:",error);
     }
     clearFields(event);
 
-}
+};
   return (
     <>
       <div>

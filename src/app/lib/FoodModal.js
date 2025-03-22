@@ -1,6 +1,6 @@
 const { default: mongoose } = require("mongoose");
 
-const FoodModal = new mongoose.Schema({
+let FoodModal = new mongoose.Schema({
           name: String,
           price: Number,
           path: String,
