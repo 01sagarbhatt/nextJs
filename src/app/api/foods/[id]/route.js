@@ -16,7 +16,7 @@ export async function GET(request, content) {
         }
 
         
-        return NextResponse.json({result, success:true, rest_id})
+        return NextResponse.json({result, success:true})
 
     }
     catch{
