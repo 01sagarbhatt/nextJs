@@ -30,8 +30,14 @@ const handleAddfoodItem = async (event) => {
   {
     setInputError(false);
   }
-
-    alert(name+price+path+description);
+   let restoData = JSON.parse(localStorage.getItem("RegistrationUser"));
+ let restaurant_ID = restoData._id;  
+    alert(name,
+      price,
+      path,
+      description,
+      restaurant_ID
+      );
 
     try{
       let response = await fetch("/api/foods", {
@@ -42,19 +48,13 @@ const handleAddfoodItem = async (event) => {
           price : Number(price),
           path,
           description,
+          restaurant_ID,
+    
         }),
 
       });
 if(response.ok){
-<<<<<<< HEAD
-  alert("done");
-  console.log("Response", response);
-  const ResponseData = response.json();
-  console.log(ResponseData);
-}
-    }catch(error){
-      console.error("Error in fetcing api:",error);
-=======
+  console.log("Raw Response", response);
   alert("Food Item Added Successfully");
 } else {
   const errorData = await response.json();
@@ -63,7 +63,6 @@ if(response.ok){
     }catch{
       console.error("Error adding food item:");
       alert("Failed to add food item. Please try again.");
->>>>>>> 21c53b84fdf0ddac27ef4201afbaaaa5efeb769d
     }
     clearFields(event);
 

@@ -3,7 +3,7 @@ import { ConnectionString } from "@/app/lib/Database";
 import { FoodSchema } from "@/app/lib/FoodModal";
 import { NextResponse } from "next/server";
 
-export async function PUT(request) {
+export async function POST(request) {
           try {
                     console.log("Connecting to MongoDB...");
                     await mongoose.connect(ConnectionString);
