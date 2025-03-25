@@ -5,12 +5,12 @@ import { NextResponse } from "next/server";
 
 export async function GET(request, content) {
     try{
-        const rest_id = content.params.id;
+        const { id } = await content.params;
         let success = false;
         console.log("Connecting to MongoDB....");
         await mongoose.connect(ConnectionString);
         console.log("Connected MongoDB....");
-        const result = await FoodSchema.findOne({restaurant_ID:rest_id});
+        const result = await FoodSchema.findOne({restaurant_ID:id});
         if(result){
             success = true;
         }
