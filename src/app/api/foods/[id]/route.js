@@ -10,13 +10,13 @@ export async function GET(request, content) {
         console.log("Connecting to MongoDB....");
         await mongoose.connect(ConnectionString);
         console.log("Connected MongoDB....");
-        const result = await FoodSchema.findOne({restaurant_ID:id});
+        const result = await FoodSchema.find({restaurant_ID:id});
         if(result){
             success = true;
         }
 
         
-        return NextResponse.json({result, success:true})
+        return NextResponse.json({result, success:true, message:"get data successfully"})
 
     }
     catch{
