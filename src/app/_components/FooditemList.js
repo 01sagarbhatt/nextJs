@@ -10,28 +10,24 @@ LoodFoodItems();
   const LoodFoodItems = async ()=>{
     let response = await fetch("http://localhost:3000/api/foods/67c7fd56b40ba55916fe074c");
     response = await response.json();
-    console.log(response);
+    console.log( response);
+    
     if(response.success){
     setFooditems(response.result);
-   
-      
 
     }
     else{
       alert("item not loading");
     }
   };
+
+
   console.log(typeof(fooditems));
   const x = JSON.stringify(fooditems, null, 3);
   console.log(x);
   console.log(typeof(x));
-  // const Result = x;
-  // console.log();
-  // console.log();
-  console.log(x);
-  // x.forEach(element => {
-  //   console.log(element);
-  // });
+
+
 
   return (
     <div>
