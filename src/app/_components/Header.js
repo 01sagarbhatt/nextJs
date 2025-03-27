@@ -35,7 +35,8 @@ const Header = () => {
 
   }
 
-  console.log(details);
+  console.log("this is details", details);
+  console.log("this is details",typeof(details));
 
 
   return (
@@ -55,8 +56,10 @@ const Header = () => {
            
             details ?
               <>
-              <li><Link href="/">Profile</Link></li>
-              <li><button className="btn btn-danger" onClick={logout}>Logout</button></li>
+                
+                <li><Link href="/">{ details.fname}</Link></li>
+                <li><button className="btn btn-danger" onClick={logout}>Logout</button></li>
+                
             </>
               :
               <>
