@@ -12,16 +12,32 @@ export async function GET(request, content) {
         console.log("Connected MongoDB....");
         const result = await FoodSchema.find({ restaurant_ID: id });
     
-        
         if(result.ok){
             success = true;
         }
-
-        
         return NextResponse.json({result, success : true, message:"get data successfully"})
-
     }
     catch{
+        return NextResponse.json({ success : false, message:"Failed to get data.."})
+    }
+}
 
+
+export async function DELETE(request, content) {
+    try {
+        const { id } = await content.params;
+        let success = false;
+        console.log("Connecting to MongoDB....");
+        await mongoose.connect(ConnectionString);
+        console.log("Connected MongoDB....");
+        const result = await FoodSchema.deleteOne({_id : id });
+
+        if(result.ok){
+            success = true;
+        }
+        return NextResponse.json({result, success : true, message:"data Delete successfully"})
+    }
+    catch{
+        return NextResponse.json({ success : false, message:"Failed to get delete data.."})
     }
 }

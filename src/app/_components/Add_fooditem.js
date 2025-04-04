@@ -31,7 +31,8 @@ const handleAddfoodItem = async (event) => {
     setInputError(false);
   }
    let restoData = JSON.parse(localStorage.getItem("RegistrationUser"));
- let restaurant_ID = restoData._id;  
+  let restaurant_ID = restoData._id;  
+  
     alert(name,
       price,
       path,

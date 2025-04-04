@@ -1,9 +1,12 @@
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useState } from "react";
 
 
+
 const FooditemList = () => {
   let [fooditems, setFooditems] = useState([]); // Initialize as Blank array
+  const Router = useRouter();
 
   useEffect(() => {
     LoodFoodItems();
@@ -31,6 +34,24 @@ const FooditemList = () => {
   console.log(x); // Converts the object to a string with indentation
   console.log(typeof x); // Will show 'string' since x is stringified
 
+
+        const DeleteFoodItems = async (id) => {
+          try {
+            let response = await fetch("http://localhost:3000/api/foods/"+id , {
+              method: 'delete'
+            });
+            response = await response.json();
+            console.log("this is Delete Res", response);
+            if (response.success) {
+              LoodFoodItems();
+            } else {
+              alert("food item not deleted...");
+            }
+          }
+          catch (error){
+            console.error("Error deleting data:", error);
+          }
+      }
 
   return (
     <div>
@@ -64,8 +85,9 @@ const FooditemList = () => {
                 </td>
                 <td scope="col">{item.description}</td>
                 <td scope="col">
-                <button className="btn btn-primary">Edit</button>                                                              
-                <button className="btn btn-danger ms-2">Delete</button>       
+                  <button className="btn btn-primary" onClick={ () => Router.push("dashboard/"+item._id)}>Edit</button>
+    
+                <button onClick={ () => DeleteFoodItems(item._id)} className="btn btn-danger ms-2">Delete</button>       
                 </td>
               </tr>
             ))}
