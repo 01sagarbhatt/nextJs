@@ -73,7 +73,7 @@ if(response.ok){
       <div>
         <h1 className="display-6 text-center">Add New Food Item</h1>
       
-          <div className="container w-25">
+          <div className="container col-8 col-md-6 col-lg-4">
             <div className="row mb-3 justify-content-center">
             <form onSubmit={handleAddfoodItem}>
               <div>

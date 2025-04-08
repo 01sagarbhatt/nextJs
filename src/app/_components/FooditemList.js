@@ -56,17 +56,18 @@ const FooditemList = () => {
   return (
     <div>
       <div>
-      <h3>Food Items:</h3>
+      <h3 className="display-6 text-center">Food Items</h3>
       {/* {fooditems ? (
         <pre>{x}</pre> // Show data as formatted JSON
       ) : (
         <p>Loading...</p>
         )} */}
         {fooditems.length > 0 ? (
-        <table className="table">
+          <div className="container">
+        <table className="table table-responsive">
           <thead>
             <tr>
-            <th scope="col">ID</th>
+            {/* <th scope="col">ID</th> */}
               <th scope="col">Name</th>
               <th scope="col">Price</th>
               <th scope="col">Image</th>
@@ -77,22 +78,27 @@ const FooditemList = () => {
           <tbody>
             {fooditems.map((item, index) => (
               <tr key={index}>
-                <td scope="col">{item._id}</td>
+                {/* <td scope="col">{item._id}</td> */}
                 <td scope="col">{item.name}</td>
                 <td scope="col">{item.price}</td>
                 <td scope="col">
-                  <img src={item.path} width={"200px"}></img>
+                  <img className="img-fluid" src={item.path} width={"200px"}></img>
                 </td>
                 <td scope="col">{item.description}</td>
                 <td scope="col">
                   <button className="btn btn-primary" onClick={ () => Router.push("dashboard/"+item._id)}>Edit</button>
     
+                </td>
+                <td>
                 <button onClick={ () => DeleteFoodItems(item._id)} className="btn btn-danger ms-2">Delete</button>       
+
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+          </div>
+
       ) : (
         <p>Loading...</p>
       )}
