@@ -1,12 +1,12 @@
 "use client";
 import CustomerHeader from "./_components/CustomerHeader";
+import Slider from "./_components/Slider";
 
 export default function Home() {
   return (
     <div>
       <CustomerHeader />
-        <h1>Hello, Next.js!</h1>
-        <button onClick={() =>alert("Hello Next JS")}>Click Me</button>
+        <Slider />
     </div>
   );
 }
