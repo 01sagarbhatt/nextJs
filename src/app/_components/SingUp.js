@@ -6,6 +6,7 @@ const SingUp = () => {
   const [fname, setFirstName] = useState("");
   const [lname, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [city, setCity] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState(false);
@@ -31,7 +32,7 @@ const SingUp = () => {
     }else{
       setPasswordError(false);
 
-    }if(!fname || !lname || !email || !password || !passwordConfirm){
+    }if(!fname || !lname || !email || !city || !password || !passwordConfirm){
       setError(true);
       return false;
     }else{
@@ -46,7 +47,7 @@ const SingUp = () => {
       let response = await fetch("/api/restaurant", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fname, lname, email, password, passwordConfirm }),
+        body: JSON.stringify({ fname, lname, email, city, password, passwordConfirm }),
       });
 
       console.log("Response Object:", response);
@@ -118,6 +119,18 @@ const SingUp = () => {
             ></input>
              {
               error && !email && <span style={{color:"red"}}>please enter your email name</span>
+            }
+          </div>
+          <div className="mb-3">
+            <label className="form-label">City</label>
+            <input
+              type="text"
+              className="form-control"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            ></input>
+             {
+              error && !city && <span style={{color:"red"}}>please enter your email name</span>
             }
           </div>
           <div className="mb-3">

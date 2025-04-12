@@ -10,10 +10,29 @@
       justify-content: space-between;
 }
 
-.links ul{
+.links ul , .C-links ul{
       display: flex;
       list-style-type: none;
 }
+
 ul li {
       margin-left: 10px;
+}
+
+.C-links{
+      display: flex;
+      align-items: center;
+}
+.inputBox{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(202, 221, 221);
+  padding: 15px 15px 0px 15px;
+  border-radius: 10px;
+
+}
+.inputBox input{
+      padding: 15px;
 }

@@ -4,6 +4,7 @@ const RestaurantModal = new mongoose.Schema({
           fname: String,
           lname: String,
           email: String,
+          city: String,
           password: String,
           passwordConfirm : String
        

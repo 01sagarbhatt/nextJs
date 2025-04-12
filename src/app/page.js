@@ -6,7 +6,14 @@ export default function Home() {
   return (
     <div>
       <CustomerHeader />
-        <Slider />
+      <Slider />
+
+      <div className="inputBox w-75">
+        <div className="input-group mb-3">
+          <input type="text" className="form-control w-25" placeholder="Selcet Place" />
+          <input type="text" className="form-control w-50" placeholder="Enter Your Location" />
+          </div>
+      </div>
     </div>
   );
 }

@@ -12,7 +12,7 @@ const CustomerHeader = () => {
                 alt="logo"
               />
             </div>
-            <div className="links">
+            <div className="C-links">
               <ul>
                 <li>
                 <Link href="/">Home</Link>                  
@@ -25,6 +25,9 @@ const CustomerHeader = () => {
                 </li>
                 <li>
                 <Link href="/">Cart(0)</Link>                  
+                </li>
+                <li>
+                <Link href="/">Add Restaurant</Link>                  
                 </li>
               </ul>
             </div>
