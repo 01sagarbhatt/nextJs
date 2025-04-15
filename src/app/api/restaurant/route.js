@@ -44,13 +44,14 @@ export async function PUT(request){
   else
   {
     const restaurant = new RestaurantSchema(payload);
-    const result = await restaurant.save();
+    result = await restaurant.save();
+    console.log("Saved Document:", result);
     if(result){
       success = true;
     }
 
   }
-  return NextResponse.json({ result, success});
+  return NextResponse.json({ result , success, message: "Restaurant Registation is Successfully"});
 
 }
 

@@ -12,9 +12,17 @@ const FooditemList = () => {
     LoodFoodItems();
   }, []);
 
+
+
+
+
   const LoodFoodItems = async () => {
     try {
-      let response = await fetch("http://localhost:3000/api/foods/67c7fd56b40ba55916fe074c");
+      let restoData = JSON.parse(localStorage.getItem("RegistrationUser"));
+      let restaurant_ID = restoData._id;  
+      console.log(restaurant_ID);
+
+      let response = await fetch("http://localhost:3000/api/foods/"+restaurant_ID);
       response = await response.json();
       console.log(response);
 
@@ -28,11 +36,11 @@ const FooditemList = () => {
     }
   };
 
-  console.log(typeof fooditems); // Will show 'object' if response.result is an object
+  // console.log(typeof fooditems); // Will show 'object' if response.result is an object
 
   const x = JSON.stringify(fooditems, null, 3);
-  console.log(x); // Converts the object to a string with indentation
-  console.log(typeof x); // Will show 'string' since x is stringified
+  // console.log(x); // Converts the object to a string with indentation
+  // console.log(typeof x); // Will show 'string' since x is stringified
 
 
         const DeleteFoodItems = async (id) => {
@@ -100,7 +108,7 @@ const FooditemList = () => {
           </div>
 
       ) : (
-        <p>Loading...</p>
+        <p>No Food Items</p>
       )}
        
       </div>

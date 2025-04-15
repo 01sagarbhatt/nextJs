@@ -24,9 +24,9 @@ const Header = () => {
     router.push("/restaurant");
   };
 
-  console.log("this is details", details);
-  console.log("this is details", typeof details);
-
+  // console.log("this is details", details);
+  // console.log("this is details", typeof details);
+  console.log(details);
   return (
     <div className="HeaderWrapper">
       <div className="logo">

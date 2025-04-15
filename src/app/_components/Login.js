@@ -35,9 +35,13 @@ let response  = await fetch("/api/restaurant",{
 response= await response.json();
 
 const {result} = response;
-localStorage.setItem("RegistrationUser",JSON.stringify(result));
-router.push("restaurant/dashboard");
-
+  localStorage.setItem("RegistrationUser", JSON.stringify(result));
+  if (result === null & undefined) {
+    router.push("restaurant");
+    
+  } else {
+    router.push("restaurant/dashboard");
+  }
 
 
 if(response.success){
@@ -48,7 +52,7 @@ if(response.success){
 }
 
 
-  alert(email+ password);
+  // alert(email+ password);
   clearFields(event);
   setEmail("");
   setPassword("");
