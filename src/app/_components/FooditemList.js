@@ -19,12 +19,17 @@ const FooditemList = () => {
   const LoodFoodItems = async () => {
     try {
       let restoData = JSON.parse(localStorage.getItem("RegistrationUser"));
-      let restaurant_ID = restoData._id;  
-      console.log(restaurant_ID);
+      if (!restoData || !restoData._id) {
+        alert("User not found in local storage");
+        return;
+      }
 
-      let response = await fetch("http://localhost:3000/api/foods/"+restaurant_ID);
+      let restaurant_ID = restoData._id;  
+        // console.log("Fetching foods for restaurant:", restaurant_ID);
+
+      let response = await fetch(`http://localhost:3000/api/foods/${restaurant_ID}`);
       response = await response.json();
-      console.log(response);
+      // console.log(response);
 
       if (response.success) {
         setFooditems(response.result); // Store result in state

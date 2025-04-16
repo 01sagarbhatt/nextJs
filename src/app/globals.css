@@ -28,11 +28,19 @@ ul li {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(202, 221, 221);
+  background-color:  #8bc43f;
   padding: 15px 15px 0px 15px;
   border-radius: 10px;
 
 }
 .inputBox input{
       padding: 15px;
+}
+.carousel-item img{
+      /* opacity: 0.8; */
+      filter: blur(3px);
+}
+#inputBox input::placeholder{
+      font-size: 20px;
+      font-weight: 800;
 }

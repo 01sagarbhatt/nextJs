@@ -55,7 +55,7 @@ const handleAddfoodItem = async (event) => {
 
       });
 if(response.ok){
-  console.log("Raw Response", response);
+  // console.log("Raw Response", response);
   alert("Food Item Added Successfully");
 } else {
   const errorData = await response.json();

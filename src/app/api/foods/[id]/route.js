@@ -5,27 +5,28 @@ import { NextResponse } from "next/server";
 
 export async function GET(request, content) {
     try{
-        const { id } = await content.params;
+        const { id } =  content.params;
         let success = false;
         console.log("Connecting to MongoDB....");
         await mongoose.connect(ConnectionString);
         console.log("Connected MongoDB....");
         const result = await FoodSchema.find({ restaurant_ID: id });
     
-        if(result.ok){
+        if (result.length > 0)
+        {
             success = true;
         }
-        return NextResponse.json({result, success : true, message:"get data successfully"})
+        return NextResponse.json({ result , success , message: "get data successfully"})
     }
     catch{
-        return NextResponse.json({ success : false, message:"Failed to get data.."})
+        return NextResponse.json({ success : false, message: "Failed to get data.."})
     }
 }
 
 
 export async function DELETE(request, content) {
     try {
-        const { id } = await content.params;
+        const { id } =  content.params;
         let success = false;
         console.log("Connecting to MongoDB....");
         await mongoose.connect(ConnectionString);

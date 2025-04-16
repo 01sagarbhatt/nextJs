@@ -10,15 +10,15 @@ const Slider = () => {
   <div className="carousel-inner">
     <div className="carousel-item active">
                                                             {/* <img src="imageOne.jpg" class="d-block w-100" alt="..."> */}
-                                                            <img src="imageTwo.jpg" className="w-100" />
+                                                            <img src="image-1.jpg" className="w-100" />
     </div>
     <div className="carousel-item">
                                                             {/* <img src="..." class="d-block w-100" alt="..."> */}
-                                                            <img src="imageTwo.jpg" className="w-100" />
+                                                            <img src="image-2.jpg" className="w-100" />
                                                             
     </div>
     <div className="carousel-item">
-    <img src="imageTwo.jpg" className="w-100" />
+    <img src="image-3.jpg" className="w-100" />
     </div>
   </div>
   <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

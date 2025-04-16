@@ -15,7 +15,7 @@ const Header = () => {
     } else if (data && pathName == "/restaurant") {
       router.push("/restaurant/dashboard");
     } else {
-      setDetails(JSON.stringify(data));
+      setDetails(JSON.parse(data));
     }
   }, []);
 
@@ -26,7 +26,10 @@ const Header = () => {
 
   // console.log("this is details", details);
   // console.log("this is details", typeof details);
-  console.log(details);
+  // console.log(details);
+
+ 
+
   return (
     <div className="HeaderWrapper">
       <div className="logo">
@@ -45,7 +48,8 @@ const Header = () => {
           {details ? (
             <>
               <li>
-                <Link href="/">{details.fname}</Link>
+              {details.restoName
+                }
               </li>
               <li>
                 <button className="btn btn-danger" onClick={logout}>
