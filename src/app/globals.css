@@ -2,6 +2,10 @@
       margin: 0;
       padding: 0;
 }
+:root {
+      --LightGreen: #95d83c;
+
+    }
 #CenterBlockElement{
       margin: auto;
 }
@@ -23,24 +27,51 @@ ul li {
       display: flex;
       align-items: center;
 }
+.links{
+      display: flex;
+      align-items: center;
+}
 .inputBox{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color:  #8bc43f;
+  background-color:  var(--LightGreen);
   padding: 15px 15px 0px 15px;
   border-radius: 10px;
 
 }
 .inputBox input{
-      padding: 15px;
+      padding: 10px;
 }
-.carousel-item img{
-      /* opacity: 0.8; */
-      filter: blur(3px);
-}
-#inputBox input::placeholder{
-      font-size: 20px;
+#inputBox input[type=text]{
+      font-size: 2vw;
       font-weight: 800;
 }
+.carousel-item img{
+      filter: blur(2px);
+}
+
+#inputBox input::placeholder{
+      font-size: 2vw;
+      font-weight: 800;
+}
+.location-list{
+      list-style-type: none;
+      position: absolute;
+      top: 60px;
+      background-color: #fff;
+      padding-left: 0;
+      margin-bottom: 0;
+}
+.location-list li{
+  margin-left: 0px;
+  padding: 5px;
+  width: 27.3vw;
+  border-bottom: 2px solid var(--LightGreen)
+      
+}
+.location-list li:hover{
+background-color: var(--LightGreen);
+}
+

@@ -80,7 +80,7 @@ const SingUp = () => {
       // delete data.result.password;
       // delete data.result.passwordConfirm;
       localStorage.setItem('RegistrationUser', JSON.stringify(data.result));
-      router.push("restaurant/dashboard");
+      // router.push("restaurant/dashboard");
 
 
     } catch (error) {

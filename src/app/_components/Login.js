@@ -36,7 +36,7 @@ response= await response.json();
 
 const {result} = response;
   localStorage.setItem("RegistrationUser", JSON.stringify(result));
-  if (result === null & undefined) {
+  if (result == null & undefined) {
     router.push("restaurant");
     
   } else {
